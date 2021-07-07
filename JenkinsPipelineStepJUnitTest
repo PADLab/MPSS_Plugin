@@ -1,1 +1,24 @@
-
+pipeline{
+    agent any
+  
+    stages{
+        stage('Build'){
+            steps{
+                //git 'INSERT REPO LINK'
+                bat '.\mvnw clean compile'
+                // sh './mvnw clean compile' This is for those on a linux based OS
+            }      
+        }
+        stage('Test'){
+            steps{
+                bat '.\mvnw test' //Will be using the Maven Wrapper to run the Test Phases
+                // sh './mvnw test' This is for those on a linux based OS
+            }
+            post{
+                always{
+                    //junit 'PATH TO XML FILE PRODUCED'
+                }
+            }
+        }
+    }
+}
