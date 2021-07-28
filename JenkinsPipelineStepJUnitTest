@@ -11,14 +11,15 @@ pipeline{
         }
         stage('Test'){
             steps{
-                bat '.\mvnw test' //Will be using the Maven Wrapper to run the Test Phases
+                bat '.\mvnw test' //Will be using the Maven Wrapper to run the Test Phases, produces an XML file 
                 // sh './mvnw test' This is for those on a linux based OS
             }
-            post{
+            /*  This section of code is only if the user wants to visually see the Junit test displayed on Jenkins. 
+                post{
                 always{
                     //junit 'PATH TO XML FILE PRODUCED'
                 }
-            }
+            }*/ 
         }
     }
 }
